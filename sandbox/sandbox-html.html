@@ -1,0 +1,42 @@
+<div class="thin">
+  <h2> <a href="/sandbox" target="_blank">Sandbox</a>
+  </h2>
+  <div class="head"><button id="new-undo" class="btn"
+            title="Brings back the last comment you clicked 'OK' on." style="background: none;
+                  color: #6083e8;
+                  border: none;
+                  box-shadow: none;
+                  float: right;
+                  position: relative;
+                  right: 25px;
+                  bottom: 5px;
+                  font-size: 12px;
+                  font-family: verdana; 
+                  visibility: hidden">
+    Undo
+  </button></div>
+  <form action="" method="post" id="messageform">
+    <div class="box pad">
+
+
+      <div id="preview" class="hidden"><br>
+        <h3 class="left">Preview:</h3>
+        <div class="box pad">
+          <div id="preview_content" class="body">
+          </div>
+        </div>
+      </div>
+      <div id="hover_pickbody" style="width: auto; height: auto; position: absolute; border: 0px solid rgb(51, 51, 51); display: none; z-index: 20;"></div>
+
+
+
+      <textarea id="quickpost" name="body" class="long" rows="10" onkeyup="resize('body');" spellcheck="false" style="margin: 0px; width: 874px; height: 122px;"></textarea>
+      <div class="center">
+        <input id="preview_button" type="button" value="Preview" onclick="Sandbox_Preview();">
+      </div>
+      <span style="float:right"><a href="/sandbox/smilies" target="_blank">list of smileys</a></span>
+      <br>
+    </div>
+  </form>
+
+</div>

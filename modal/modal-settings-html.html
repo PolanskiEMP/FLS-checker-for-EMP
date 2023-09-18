@@ -1,0 +1,487 @@
+<!-- The Modal -->
+<div id="settingsModal" class="quote-comment-modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Settings:</h2>
+    </div>
+    <div class="modal-body post_content">
+      <p>Page header template:</p>
+      <textarea id="page-header-setting-text-area"></textarea>
+      <p>Report header template:</p>
+      <textarea id="report-header-setting-text-area"></textarea>
+      <p>Report Checker comment in relation to quoted comment template:</p>
+      <textarea id="comment-quote-setting-text-area"></textarea>
+      <p>Report Footer:</p>
+      <textarea id="report-footer-setting-text-area"></textarea>
+      <div class="box pad">
+        <h3 class="center">Practice your bbCode skills here</h3>
+        <br />
+        <div id="preview" class="hidden">
+          <br />
+          <h3 class="left">Preview:</h3>
+          <div class="box pad">
+            <div id="preview_content" class="body"></div>
+          </div>
+        </div>
+        <div
+          id="hover_pickbody"
+          style="
+            width: auto;
+            height: auto;
+            position: absolute;
+            border: 0px solid rgb(51, 51, 51);
+            display: none;
+            z-index: 20;
+          "
+        ></div>
+
+        <table class="bb_holder">
+          <tbody>
+            <tr>
+              <td class="colhead" style="padding: 2px 2px 0px 6px;">
+                <div class="bb_buttons_left">
+                  <a
+                    class="bb_button"
+                    onclick="tag('b', 'body')"
+                    title="Bold text: [b]text[/b]"
+                    alt="B"
+                    ><b>B</b></a
+                  >
+                  <a
+                    class="bb_button"
+                    onclick="tag('i', 'body')"
+                    title="Italic text: [i]text[/i]"
+                    alt="I"
+                    ><i>I</i></a
+                  >
+                  <a
+                    class="bb_button"
+                    onclick="tag('u', 'body')"
+                    title="Underline text: [u]text[/u]"
+                    alt="U"
+                    ><u>U</u></a
+                  >
+                  <a
+                    class="bb_button"
+                    onclick="tag('s', 'body')"
+                    title="Strikethrough text: [s]text[/s]"
+                    alt="S"
+                    ><s>S</s></a
+                  >
+                  <a
+                    class="bb_button"
+                    onclick="insert('[hr]', 'body')"
+                    title="Horizontal Line: [hr]"
+                    alt="HL"
+                    >hr</a
+                  >
+
+                  <a
+                    class="bb_button"
+                    onclick="url('body')"
+                    title="URL: [url]http://url[/url] or [url=http://url]URL text[/url]"
+                    alt="Url"
+                    >Url</a
+                  >
+                  <a
+                    class="bb_button"
+                    onclick="anchor('body')"
+                    title="Anchored heading: [anchor=name]Heading text[/anchor] or [#=name]Heading text[/#]"
+                    alt="Anchor"
+                    >Anchor</a
+                  >
+
+                  <a
+                    class="bb_button"
+                    onclick="image_prompt('body')"
+                    title="Image: [img]http://image_url[/img]"
+                    alt="Image"
+                    >Img</a
+                  >
+                  <a
+                    class="bb_button"
+                    onclick="tag('code', 'body')"
+                    title="Code display: [code]code[/code]"
+                    alt="Code"
+                    >Code</a
+                  >
+                  <a
+                    class="bb_button"
+                    onclick="tag('quote', 'body')"
+                    title="Quote text: [quote]text[/quote]"
+                    alt="Quote"
+                    >Quote</a
+                  >
+
+                  <a
+                    class="bb_button"
+                    onclick="video('body')"
+                    title="Youtube video: [video=http://www.youtube.com/v/abcd]"
+                    alt="Youtube"
+                    >Video</a
+                  >
+                  <a
+                    class="bb_button"
+                    onclick="spoiler('body')"
+                    title="Spoiler: [spoiler=title]hidden text[/spoiler]"
+                    alt="Spoiler"
+                    >Spoiler</a
+                  >
+
+                  <a
+                    class="bb_button"
+                    onclick="insert('[*]', 'body')"
+                    title="List item: [*]text"
+                    alt="List"
+                    >List</a
+                  >
+
+                  <a
+                    class="bb_button"
+                    onclick="colorpicker('body','bg');"
+                    title="Background: [bg=color,width% or widthpx,align]text[/bg]"
+                    alt="Background"
+                    >Bg</a
+                  >
+
+                  <a
+                    class="bb_button"
+                    onclick="table('body')"
+                    title="Table: [table=color,width% or widthpx,align][tr][td]text[/td][td]text[/td][/tr][/table]"
+                    alt="Table"
+                    >Table</a
+                  >
+                </div>
+                <div class="bb_buttons_right">
+                  <img
+                    class="bb_icon"
+                    src="/static/common/symbols/align_center.png"
+                    onclick="wrap('align','','center', 'body')"
+                    title="Center Align text: [align=center]text[/align]"
+                    alt="Center"
+                  />
+                  <img
+                    class="bb_icon"
+                    src="/static/common/symbols/align_left.png"
+                    onclick="wrap('align','','left', 'body')"
+                    title="Left Align text: [align=left]text[/align]"
+                    alt="Left"
+                  />
+                  <img
+                    class="bb_icon"
+                    src="/static/common/symbols/align_justify.png"
+                    onclick="wrap('align','','justify', 'body')"
+                    title="Justify text: [align=justify]text[/align]"
+                    alt="Justify"
+                  />
+                  <img
+                    class="bb_icon"
+                    src="/static/common/symbols/align_right.png"
+                    onclick="wrap('align','','right', 'body')"
+                    title="Right Align text: [align=right]text[/align]"
+                    alt="Right"
+                  />
+                  <img
+                    class="bb_icon"
+                    src="/static/common/symbols/text_uppercase.png"
+                    onclick="text('up', 'body')"
+                    title="To Uppercase"
+                    alt="Up"
+                  />
+                  <img
+                    class="bb_icon"
+                    src="/static/common/symbols/text_lowercase.png"
+                    onclick="text('low', 'body')"
+                    title="To Lowercase"
+                    alt="Low"
+                  />
+                </div>
+              </td>
+              <td class="colhead" style="padding: 2px 6px 0px 0px;" rowspan="2">
+                <div class="bb_buttons_right">
+                  <a
+                    class="bb_help"
+                    href="/articles/view/bbcode"
+                    target="_blank"
+                    >Help</a
+                  >
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="colhead" style="padding: 2px 2px 0px 6px;">
+                <div class="bb_buttons_left">
+                  <select
+                    class="bb_button"
+                    name="fontfont"
+                    id="fontfontbody"
+                    onchange="font('font',this.value,'body');"
+                    title="Font: [font=fontfamily]text[/font]"
+                  >
+                    <option value="-1">Font Type</option>
+
+                    <option
+                      value="Arial"
+                      style="
+                        font-family: Arial, 'Helvetica Neue', Helvetica,
+                          sans-serif;
+                      "
+                      >Arial</option
+                    >
+                    <option
+                      value="Arial Black"
+                      style="
+                        font-family: 'Arial Black', 'Arial Bold', Gadget,
+                          sans-serif;
+                      "
+                      >Arial Black</option
+                    >
+                    <option
+                      value="Comic Sans MS"
+                      style="font-family: 'Comic Sans MS', cursive, sans-serif;"
+                      >Comic Sans MS</option
+                    >
+                    <option
+                      value="Courier New"
+                      style="
+                        font-family: 'Courier New', Courier,
+                          'Lucida Sans Typewriter', 'Lucida Typewriter',
+                          monospace;
+                      "
+                      >Courier New</option
+                    >
+                    <option
+                      value="Franklin Gothic Medium"
+                      style="
+                        font-family: 'Franklin Gothic Medium', 'Franklin Gothic',
+                          'ITC Franklin Gothic', Arial, sans-serif;
+                      "
+                      >Franklin Gothic Medium</option
+                    >
+                    <option
+                      value="Georgia"
+                      style="
+                        font-family: Georgia, Times, 'Times New Roman', serif;
+                      "
+                      >Georgia</option
+                    >
+                    <option
+                      value="Helvetica"
+                      style="
+                        font-family: 'Helvetica Neue', Helvetica, Arial,
+                          sans-serif;
+                      "
+                      >Helvetica</option
+                    >
+                    <option
+                      value="Impact"
+                      style="
+                        font-family: Impact, Haettenschweiler,
+                          'Franklin Gothic Bold', Charcoal, 'Helvetica Inserat',
+                          'Bitstream Vera Sans Bold', 'Arial Black', sans-serif;
+                      "
+                      >Impact</option
+                    >
+                    <option
+                      value="Lucida Console"
+                      style="font-family: 'Lucida Console', Monaco, monospace;"
+                      >Lucida Console</option
+                    >
+                    <option
+                      value="Lucida Sans Unicode"
+                      style="
+                        font-family: 'Lucida Sans Unicode', 'Lucida Grande',
+                          'Lucida Sans', Geneva, Verdana, sans-serif;
+                      "
+                      >Lucida Sans Unicode</option
+                    >
+                    <option
+                      value="Microsoft Sans Serif"
+                      style="
+                        font-family: 'Microsoft Sans Serif', Helvetica,
+                          sans-serif;
+                      "
+                      >Microsoft Sans Serif</option
+                    >
+                    <option
+                      value="Palatino Linotype"
+                      style="
+                        font-family: Palatino, 'Palatino Linotype',
+                          'Palatino LT STD', 'Book Antiqua', Georgia, serif;
+                      "
+                      >Palatino Linotype</option
+                    >
+                    <option
+                      value="Tahoma"
+                      style="font-family: Tahoma, Verdana, Segoe, sans-serif;"
+                      >Tahoma</option
+                    >
+                    <option
+                      value="Times New Roman"
+                      style="
+                        font-family: TimesNewRoman, 'Times New Roman', Times,
+                          Baskerville, Georgia, serif;
+                      "
+                      >Times New Roman</option
+                    >
+                    <option
+                      value="Trebuchet MS"
+                      style="
+                        font-family: 'Trebuchet MS', 'Lucida Grande',
+                          'Lucida Sans Unicode', 'Lucida Sans', Tahoma,
+                          sans-serif;
+                      "
+                      >Trebuchet MS</option
+                    >
+                    <option
+                      value="Verdana"
+                      style="font-family: Verdana, Geneva, sans-serif;"
+                      >Verdana</option
+                    >
+                  </select>
+
+                  <select
+                    class="bb_button"
+                    name="fontsize"
+                    id="fontsizebody"
+                    onchange="font('size',this.value,'body');"
+                    title="Text Size: [size=number]text[/size]"
+                  >
+                    <option value="-1" selected="selected">Font size</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                  </select>
+                  <a
+                    class="bb_button"
+                    onclick="colorpicker('body','color');"
+                    title="Text Color: [color=colorname]text[/color] or [color=#hexnumber]text[/color]"
+                    alt="Color"
+                    >Color</a
+                  >
+
+                  <a
+                    class="bb_button"
+                    onclick="insert('[cast]', 'body')"
+                    title="Cast icon: [quote]"
+                    alt="cast"
+                    >cast</a
+                  >
+                  <a
+                    class="bb_button"
+                    onclick="insert('[details]', 'body')"
+                    title="Details icon: [details]"
+                    alt="details"
+                    >details</a
+                  >
+                  <a
+                    class="bb_button"
+                    onclick="insert('[info]', 'body')"
+                    title="Info icon: [info]"
+                    alt="info"
+                    >info</a
+                  >
+                  <a
+                    class="bb_button"
+                    onclick="insert('[plot]', 'body')"
+                    title="Plot icon: [plot]"
+                    alt="plot"
+                    >plot</a
+                  >
+                  <a
+                    class="bb_button"
+                    onclick="insert('[screens]', 'body')"
+                    title="Screens icon: [screens]"
+                    alt="screens"
+                    >screens</a
+                  >
+                </div>
+                <div class="bb_buttons_right">
+                  <a
+                    class="bb_button"
+                    onclick="tag('sup', 'body')"
+                    title="Superscript text: [sup]text[/sup]"
+                    alt="supX"
+                    >sup<sup>x</sup></a
+                  >
+                  <a
+                    class="bb_button"
+                    onclick="tag('sub', 'body')"
+                    title="Subscript text: [sub]text[/sub]"
+                    alt="subX"
+                    >sub<sub>x</sub></a
+                  >
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <div id="pickerholderbody" class="picker_holder"></div>
+                <div id="smiley_overflowbody" class="bb_smiley_holder"></div>
+                <div class="overflow_button">
+                  <a
+                    href="#"
+                    id="open_overflowbody"
+                    onclick="if (this.isopen) {Close_Smilies('body');} else {Open_Smilies(0,30,'body');};return false;"
+                    >Show smilies</a
+                  >
+                  <a
+                    href="#"
+                    id="open_overflow_morebody"
+                    onclick="Open_Smilies(0,240,'body');return false;"
+                  ></a>
+                  <span
+                    id="smiley_countbody"
+                    class="number"
+                    style="float: right;"
+                  ></span>
+                  <span
+                    id="smiley_maxbody"
+                    class="number"
+                    style="float: left;"
+                  ></span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <textarea
+          id="body"
+          name="body"
+          class="long"
+          rows="10"
+          onkeyup="resize('body');"
+        ></textarea>
+        <div class="center">
+          <input
+            id="preview_button"
+            type="button"
+            value="Preview"
+            onclick="Sandbox_Preview();"
+          />
+        </div>
+        <span style="float: right;"
+          ><a href="/sandbox/smilies" target="_blank">list of smileys</a></span
+        >
+        <br />
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="modal-footer-buttons">
+        <button class="btn" id="Cancel-button">Reset</button>
+        <button class="btn" id="Ok-button">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+* trailing and leading spaces in post number fields
+* being able to submit report to the checking thread
+* opening the settings page and pressing the top right "x" to close followed by quoting a comment. returning to settings will show the quote modal.
+* preview button in the settings modal throws and error and gets stuck on "updating" forever
+* inserting bbcode into header/footer etc in the settings does not work 
+* don't upscale external images if they are too small (i think we downscale to 500px width?)
+* add page load check on post scanning
+
+** Center the "Open Menu" button between "Content" div and right edge
+** Support for themes based on userstyle
+** Change page header and report header to reflect the type of check (comments vs posts)
+** Add alert in Settings modal to confirm changes have been saved. Currently gives the impression the button does nothing
+** Change menu buttons' titles according to their current status (show/hide)
+
+*** Add support for collage comments
