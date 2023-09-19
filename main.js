@@ -17,7 +17,6 @@ let forum_checker_string = "forum/recent";
 let user_settings = GM_SuperValue.get("user_settings");
 var undoArray = [];
 
-
 // checks if is still scanning
 function scanCheck() {
     let isScaning = GM_getValue("isScaning");
@@ -31,7 +30,6 @@ function scanCheck() {
 }
 
 function hidePost(postIdString) {
-    console.log("hidePost - postIdString: " + postIdString);
     jQuery("#" + postIdString).hide();
     if (jQuery("#" + postIdString).prev().is("div.head")){
         jQuery("#" + postIdString).prev().hide();
@@ -44,8 +42,6 @@ function hidePost(postIdString) {
 function undoHidePost() {
     
     let postIdString = undoArray.pop();
-    console.log("hidePost - postIdString: " + postIdString);
-    console.log(postIdString);
     jQuery("#" + postIdString).show();
     if (jQuery("#" + postIdString).prev().is("div.head")){
         jQuery("#" + postIdString).prev().show();

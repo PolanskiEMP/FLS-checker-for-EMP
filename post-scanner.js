@@ -2,11 +2,9 @@ function removePostsOnPage() {
     if((document.URL.indexOf(collage_checker_string) >= 0) || (document.URL.indexOf(forum_checker_string) >= 0) || (document.URL.indexOf(torrent_checker_string) >= 0)){
             jQuery("table[id^=post]").prev().remove();
             jQuery("table[id^=post]").remove();
-            console.log("remove posts on page not requests");
         } else {
             jQuery("div[id^=post]").prev().remove();
             jQuery("div[id^=post]").remove();
-            console.log("remove posts on page requests");
         }
 }
 
@@ -19,7 +17,6 @@ function clearSavedValues() {
 }
 
 function scanPosts() {
-    console.log("scanposts()");
     let mostRecentComment = GM_getValue("mostRecentComment");
     let oldestComment = GM_getValue("oldestComment");
     let storedPostsHtml = GM_getValue("storedPostsHtml");
@@ -35,7 +32,6 @@ function scanPosts() {
         storedPostsHtml = "";
     }
 
-    console.log("most recent:" + mostRecentComment + " oldestComment:" + oldestComment + " ");
     let ans = iterateThroughPosts(mostRecentComment, oldestComment, storedPostsHtml);
 
     GM_setValue("storedPostsHtml", ans.storedHtml);
@@ -111,8 +107,6 @@ function scanPosts() {
 }
 
 function generateCheckingPageHeader(mostRecentComment, oldestComment) {
-    //    changed to show the correct number of posts if filters are applied
-    //let numberOfComments = mostRecentComment - oldestComment;
     let numberOfComments = -1;
     if((document.URL.indexOf(collage_checker_string) >= 0) || (document.URL.indexOf(forum_checker_string) >= 0) || (document.URL.indexOf(torrent_checker_string) >= 0)){
         numberOfComments = jQuery("table[id^=post]").length;
@@ -135,7 +129,6 @@ function generateCheckingPageHeader(mostRecentComment, oldestComment) {
 }
 
 function generateReportHeader(mostRecentComment, oldestComment) {
-    //let numberOfComments = mostRecentComment - oldestComment;
     let numberOfComments = -1;
     if((document.URL.indexOf(collage_checker_string) >= 0) || (document.URL.indexOf(forum_checker_string) >= 0) || (document.URL.indexOf(torrent_checker_string) >= 0)){
         numberOfComments = jQuery("table[id^=post]").length;
@@ -163,63 +156,58 @@ function iterateThroughPosts(mostRecentComment, oldestComment, storedPostsHtml) 
     let postArray = [];
     let tempPostHtml = "";
     postArray.push(storedPostsHtml);
-    console.log("iteratethroughposts()");
+
     //    checking if checker is torrent, collage or forum comments
     if((document.URL.indexOf(collage_checker_string) >= 0) || (document.URL.indexOf(forum_checker_string) >= 0) || (document.URL.indexOf(torrent_checker_string) >= 0)){
-        console.log("checker is collage, forum or torrent comments");
-            jQuery("table[id^=post]").each(function () {
-                postId = parseInt(jQuery(this).find(".smallhead").find(".post_id").text().replace("#", ""));
-                if (postId < oldestComment) {
-                    finished = true;
-                    return false;
-                } else if (postId > mostRecentComment) {
-                    return true;
-                } else {
-                    if (postId < previousPostId || postId == mostRecentComment) {
-                        //   re-populates posts after scanning, if there is a header then include those
-                        if (jQuery("#post" + postId).prev().is("div.head")){
-                            tempPostHtml = "\n" + jQuery(this).prev()[0].outerHTML + "\n" + jQuery(this)[0].outerHTML;
-                            postArray.push(tempPostHtml);
-                            previousPostId = postId;
-                            GM_setValue("previousPostId", postId);
-                        } else {
-                            tempPostHtml = "\n" + jQuery(this)[0].outerHTML;
-                            postArray.push(tempPostHtml);
-                            previousPostId = postId;
-                            GM_setValue("previousPostId", postId);
-                        }
-                    } else {
-                        console.log("Post with ID " + postId + " was ignored because it's a dupe.");
-                    }
-                }
-            });
-    } else {
-            // checking if checker is for requests
-            console.log("checker is request comments");
-            
-            jQuery("div[id^=post]").each(function () {
-                postId = parseInt(jQuery(this).find(".smallhead").find(".post_id").text().replace("#", ""));
-                if (postId < oldestComment) {
-                    finished = true;
-                    return false;
-                } else if (postId > mostRecentComment) {
-                    return true;
-                } else {
-                    if (postId < previousPostId || postId == mostRecentComment) {
-                        tempPostHtml = "\n" + jQuery(this)[0].outerHTML;
+        jQuery("table[id^=post]").each(function () {
+            postId = parseInt(jQuery(this).find(".smallhead").find(".post_id").text().replace("#", ""));
+            if (postId < oldestComment) {
+                finished = true;
+                return false;
+            } else if (postId > mostRecentComment) {
+                return true;
+            } else {
+                if (postId < previousPostId || postId == mostRecentComment) {
+                    //   re-populates posts after scanning, if there is a header then include those
+                    if (jQuery("#post" + postId).prev().is("div.head")){
+                        tempPostHtml = "\n" + jQuery(this).prev()[0].outerHTML + "\n" + jQuery(this)[0].outerHTML;
                         postArray.push(tempPostHtml);
                         previousPostId = postId;
                         GM_setValue("previousPostId", postId);
                     } else {
-                        console.log("Comment with ID " + postId + " was ignored because it's a dupe.");
+                        tempPostHtml = "\n" + jQuery(this)[0].outerHTML;
+                        postArray.push(tempPostHtml);
+                        previousPostId = postId;
+                        GM_setValue("previousPostId", postId);
                     }
+                } else {
+                    console.log("Post with ID " + postId + " was ignored because it's a dupe.");
                 }
-            });
+            }
+        });
+    } else {  // requests
+        jQuery("div[id^=post]").each(function () {
+            postId = parseInt(jQuery(this).find(".smallhead").find(".post_id").text().replace("#", ""));
+            if (postId < oldestComment) {
+                finished = true;
+                return false;
+            } else if (postId > mostRecentComment) {
+                return true;
+            } else {
+                if (postId < previousPostId || postId == mostRecentComment) {
+                    tempPostHtml = "\n" + jQuery(this)[0].outerHTML;
+                    postArray.push(tempPostHtml);
+                    previousPostId = postId;
+                    GM_setValue("previousPostId", postId);
+                } else {
+                    console.log("Comment with ID " + postId + " was ignored because it's a dupe.");
+                }
+            }
+        });
     }
     postArray.reverse();
     storedPostsHtml = postArray.join("\n");
 
-    //console.log(postId);
     console.log("is finished: " + finished);
     return { isFinished: finished, storedHtml: storedPostsHtml };
 }

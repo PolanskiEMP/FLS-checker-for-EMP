@@ -5,7 +5,6 @@ function loadProgressBarStyle(){
     GM_addStyle (style);
 }
 
-
 function insertProgressBarHtml(){
     let progressBarHtml = GM_getResourceText("progressBarHtml");
     jQuery("#content").prepend(progressBarHtml);
@@ -19,7 +18,6 @@ function insertProgressBarHtml(){
     }
 
 }
-
 
 function updateProgressBarValue(){
     let totalValue = -1;
@@ -36,6 +34,5 @@ function updateProgressBarValue(){
     jQuery("#progress-bar-lable").html(currentValue + " Out Of " + totalValue);
 
 }
-
 
 loadProgressBarStyle();

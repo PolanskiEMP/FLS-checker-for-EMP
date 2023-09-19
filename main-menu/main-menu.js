@@ -20,7 +20,6 @@ function addMainMenuToDom() {
 }
 
 // atempt to make the main-menu-button show/hide the menu and change button label on click
-
 function setMainMenuOpen() {
     let isMainMenuOpen = GM_getValue("isMainMenuOpen");
     if (isMainMenuOpen) {
@@ -31,7 +30,6 @@ function setMainMenuOpen() {
         jQuery(".main-menu-form-popup").slideDown(450);
     };
 };
-
 
 function setHideAvatarLabels() {
     let isHidingAvatars = GM_getValue("isHidingAvatars");
@@ -86,7 +84,6 @@ function registerButtonsCallbacks() {
             jQuery(".main-menu-form-popup").slideDown(450);
         });
     } else {
-        console.log("main-menu.js");
         jQuery("body").on("click", "#main-menu-button", function () {
             try {
                 newestCommentId = parseInt(
@@ -120,8 +117,7 @@ function registerButtonsCallbacks() {
         GM_setValue("isMainMenuOpen", true);
     });
 
-    /* hides/show menu <- shamelessly copied from the code below. I'm positive there are better ways of doing this,
-    but I haven't learned them yet, and this one works too */
+    // hide/show menu 
     jQuery("body").on("click", "#main-menu-button", function () {
         let isMainMenuOpen = GM_getValue("isMainMenuOpen");
         if (isMainMenuOpen) {
@@ -133,7 +129,7 @@ function registerButtonsCallbacks() {
         setMainMenuOpen(isMainMenuOpen);
     });
 
-    // hides/show avatars
+    // hide/show avatars
     jQuery("body").on("click", ".main-menu-form-popup #hide-avatar-button", function () {
         let isHidingAvatars = GM_getValue("isHidingAvatars");
         if (isHidingAvatars) {
@@ -145,7 +141,7 @@ function registerButtonsCallbacks() {
         setHideAvatarLabels(isHidingAvatars);
     });
 
-    // hides/show badges
+    // hide/show badges
     jQuery("body").on("click", ".main-menu-form-popup #hide-badges-button", function () {
         let isHidingBadges = GM_getValue("isHidingBadges");
         if (isHidingBadges) {
@@ -157,7 +153,7 @@ function registerButtonsCallbacks() {
         setHideBadgesLabels(isHidingBadges);
     });
 
-    // hides/show signatues
+    // hide/show signatues
     jQuery("body").on("click", ".main-menu-form-popup #hide-signatures-button", function () {
         let isHidingSignature = GM_getValue("isHidingSignature");
         if (isHidingSignature) {
