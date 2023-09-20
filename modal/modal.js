@@ -14,54 +14,12 @@ function insertModalHtml() {
     registerQuoteModalButtonsCallbacks();
 }
 
-function insertSettingsModalHtml() {
-    if (jQuery("#settingsModal").length == 0) {
-        let modalHtml = GM_getResourceText("modalSettingsHtml");
-        jQuery("body").append(modalHtml);
-    }
-    fillSettingsTextAreas();
-    registerSettingsModalButtonsCallback();
-}
-
-function saveSettings() {
-    if (user_settings === undefined) {
-        user_settings = {};
-    }
-    user_settings.Page_Header = jQuery(".modal-content #page-header-setting-text-area").val();
-
-    user_settings.Report_Header = jQuery(".modal-content #report-header-setting-text-area").val();
-
-    user_settings.Report_Comment = jQuery(".modal-content #comment-quote-setting-text-area").val();
-
-    user_settings.Report_Footer = jQuery(".modal-content #report-footer-setting-text-area").val();
-
-    GM_SuperValue.set("user_settings", user_settings);
-}
-
 function fillSettingsTextAreas() {
-    jQuery(".modal-content #page-header-setting-text-area").val(
-        user_settings === undefined ? default_settings.Page_Header : user_settings.Page_Header
-    );
-    jQuery(".modal-content #report-header-setting-text-area").val(
-        user_settings === undefined ? default_settings.Report_Header : user_settings.Report_Header
-    );
-    jQuery(".modal-content #comment-quote-setting-text-area").val(
-        user_settings === undefined ? default_settings.Report_Comment : user_settings.Report_Comment
-    );
-    jQuery(".modal-content #report-footer-setting-text-area").val(
-        user_settings === undefined ? default_settings.Report_Footer : user_settings.Report_Footer
-    );
-}
-
-//  reset settings to default values
-function resetSettingsToDefault() {
     jQuery(".modal-content #page-header-setting-text-area").val(default_settings.Page_Header);
     jQuery(".modal-content #report-header-setting-text-area").val(default_settings.Report_Header);
     jQuery(".modal-content #comment-quote-setting-text-area").val(default_settings.Report_Comment);
     jQuery(".modal-content #report-footer-setting-text-area").val(default_settings.Report_Footer);
-    user_settings = undefined;
-    GM_deleteValue("user_settings", user_settings);
-}
+    }
 
 function setModalContent(htmlContent) {
     jQuery(".quote-comment-modal .modal-body").html(htmlContent);
@@ -71,21 +29,6 @@ function unregisterModalButtonsCallbacks() {
     jQuery("body").off("click", ".quote-comment-modal .close");
     jQuery("body").off("click", ".quote-comment-modal #Cancel-button");
     jQuery("body").off("click", ".quote-comment-modal #Ok-button");
-}
-
-function registerSettingsModalButtonsCallback() {
-    jQuery("body").on("click", ".quote-comment-modal .close", function () {
-        jQuery(".quote-comment-modal").hide();
-        unregisterModalButtonsCallbacks();
-    });
-
-    jQuery("body").on("click", ".quote-comment-modal #Cancel-button", function () {
-        resetSettingsToDefault();
-    });
-
-    jQuery("body").on("click", ".quote-comment-modal #Ok-button", function () {
-        saveSettings();
-    });
 }
 
 function registerQuoteModalButtonsCallbacks() {
@@ -108,7 +51,7 @@ function registerQuoteModalButtonsCallbacks() {
         let username = jQuery(".modal-content").find(".user_name a").html().trim(/ +$/, "");
         let checkerComment = jQuery(".modal-content #comment-text-area").val();
         let sectionChar = section.name.charAt(0);
-        console.log("I see you're checking " + section.name +"!")
+        // console.log("I see you are checking " + section.name +"!")
 
         if (section.name == "requests") {
             postIdJquery = jQuery(".modal-content").find("div[id^=post]");
