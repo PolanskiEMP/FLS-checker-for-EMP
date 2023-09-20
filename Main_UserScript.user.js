@@ -7,7 +7,8 @@
 // @include      https://www.empornium.*/torrents.php*allcomments
 // @include      https://www.empornium.*/requests.php*allcomments
 // @include      https://www.empornium.*/forum/recent*
-// @downloadURL  https://github.com/PolanskiEMP/FLS-checker-for-EMP/raw/main/Main_UserScript.user.js //
+// @downloadURL  https://github.com/PolanskiEMP/FLS-checker-for-EMP/raw/main/Main_UserScript.user.js
+// @updateURL    https://github.com/PolanskiEMP/FLS-checker-for-EMP/raw/main/Main_UserScript.user.js
 // @grant        GM_setValue
 // @grant        GM_getValue
 // @grant        GM_deleteValue
