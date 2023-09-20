@@ -114,25 +114,12 @@ function generateCheckingPageHeader(mostRecentComment, oldestComment) {
         numberOfComments = jQuery("div[id^=post]").length;
     }
 
-//     let headerString;
-//     if (user_settings === undefined) {
-//         headerString = default_settings.Page_Header.replace("{%olderPostId%}", oldestComment)
-//             .replace("{%newestPostId%}", mostRecentComment)
-//             .replace("{%totalPosts%}", numberOfComments);
-//     } else {
-//         headerString = user_settings.Page_Header.replace("{%olderPostId%}", oldestComment)
-//             .replace("{%newestPostId%}", mostRecentComment)
-//             .replace("{%totalPosts%}", numberOfComments);
-//     }
-
     let headerString = default_settings.Page_Header.replace("{%olderPostId%}", oldestComment)
         .replace("{%newestPostId%}", mostRecentComment)
         .replace("{%totalPosts%}", numberOfComments);
 
     return headerString;
 }
-
-
 
 function generateReportHeader(mostRecentComment, oldestComment) {
     let numberOfComments = -1;
@@ -141,16 +128,6 @@ function generateReportHeader(mostRecentComment, oldestComment) {
     } else {
         numberOfComments = jQuery("div[id^=post]").length;
     }
-    // let headerString;
-    // if (user_settings === undefined) {
-    //     headerString = default_settings.Report_Header.replace("{%olderPostId%}", oldestComment)
-    //         .replace("{%newestPostId%}", mostRecentComment)
-    //         .replace("{%totalPosts%}", numberOfComments);
-    // } else {
-    //     headerString = user_settings.Report_Header.replace("{%olderPostId%}", oldestComment)
-    //         .replace("{%newestPostId%}", mostRecentComment)
-    //         .replace("{%totalPosts%}", numberOfComments);
-    // }
 
     let headerString = default_settings.Report_Header.replace("{%olderPostId%}", oldestComment)
         .replace("{%newestPostId%}", mostRecentComment)
@@ -218,12 +195,11 @@ function iterateThroughPosts(mostRecentComment, oldestComment, storedPostsHtml) 
     postArray.reverse();
     storedPostsHtml = postArray.join("\n");
 
-    console.log("is finished: " + finished);
     return { isFinished: finished, storedHtml: storedPostsHtml };
 }
 
 function finishReportPrematurely() {
-    alert("did something");  // placeholder to test if the button is working
+    alert("Work in progress");  // placeholder to test if the button is working
     
     /*  NEEDS DISCUSSION
     

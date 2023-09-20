@@ -19,7 +19,7 @@ function addMainMenuToDom() {
     registerButtonsCallbacks();
 }
 
-// atempt to make the main-menu-button show/hide the menu and change button label on click
+// shows/hides the main menu and changes button label on click
 function setMainMenuOpen() {
     let isMainMenuOpen = GM_getValue("isMainMenuOpen");
     if (isMainMenuOpen) {
@@ -107,15 +107,6 @@ function registerButtonsCallbacks() {
         jQuery("#main-menu-button").html("Open Menu");
         GM_setValue("isMainMenuOpen", true);
     });
-
-    // // shows settings modal
-    // jQuery("body").on("click", ".main-menu-form-popup #settings-button", function () {
-    //     insertSettingsModalHtml();
-    //     jQuery(".quote-comment-modal").show();
-    //     jQuery(".main-menu-form-popup").slideDown(450);
-    //     jQuery("#main-menu-button").html("Open Menu");
-    //     GM_setValue("isMainMenuOpen", true);
-    // });
 
     // hide/show menu 
     jQuery("body").on("click", "#main-menu-button", function () {

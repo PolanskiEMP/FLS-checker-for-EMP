@@ -4,7 +4,7 @@
 // @version      1.94
 // @description  Credits to curtwagner who wrote and maintained the original script, and to Goodguygregg for bringing it back to life.
 // @author       Polanski
-// @match        https://www.empornium.*/torrents.php*allcomments
+// @include      https://www.empornium.*/torrents.php*allcomments
 // @include      https://www.empornium.*/requests.php*allcomments
 // @include      https://www.empornium.*/forum/recent*
 // @downloadURL  https://github.com/PolanskiEMP/FLS-checker-for-EMP/raw/dev/Main_UserScript.user.js //
