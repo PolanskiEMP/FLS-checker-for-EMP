@@ -14,7 +14,7 @@ let torrent_checker_string = "torrents.php";
 let forum_checker_string = "forum/recent";
 //document.URL.indexOf("https://www.empornium.me/collages.php")
 
-let user_settings = GM_SuperValue.get("user_settings");
+// let user_settings = GM_SuperValue.get("user_settings");
 var undoArray = [];
 
 // checks if is still scanning

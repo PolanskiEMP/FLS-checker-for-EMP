@@ -108,14 +108,14 @@ function registerButtonsCallbacks() {
         GM_setValue("isMainMenuOpen", true);
     });
 
-    // shows settings modal
-    jQuery("body").on("click", ".main-menu-form-popup #settings-button", function () {
-        insertSettingsModalHtml();
-        jQuery(".quote-comment-modal").show();
-        jQuery(".main-menu-form-popup").slideDown(450);
-        jQuery("#main-menu-button").html("Open Menu");
-        GM_setValue("isMainMenuOpen", true);
-    });
+    // // shows settings modal
+    // jQuery("body").on("click", ".main-menu-form-popup #settings-button", function () {
+    //     insertSettingsModalHtml();
+    //     jQuery(".quote-comment-modal").show();
+    //     jQuery(".main-menu-form-popup").slideDown(450);
+    //     jQuery("#main-menu-button").html("Open Menu");
+    //     GM_setValue("isMainMenuOpen", true);
+    // });
 
     // hide/show menu 
     jQuery("body").on("click", "#main-menu-button", function () {

@@ -114,19 +114,25 @@ function generateCheckingPageHeader(mostRecentComment, oldestComment) {
         numberOfComments = jQuery("div[id^=post]").length;
     }
 
-    let headerString;
-    if (user_settings === undefined) {
-        headerString = default_settings.Page_Header.replace("{%olderPostId%}", oldestComment)
-            .replace("{%newestPostId%}", mostRecentComment)
-            .replace("{%totalPosts%}", numberOfComments);
-    } else {
-        headerString = user_settings.Page_Header.replace("{%olderPostId%}", oldestComment)
-            .replace("{%newestPostId%}", mostRecentComment)
-            .replace("{%totalPosts%}", numberOfComments);
-    }
+//     let headerString;
+//     if (user_settings === undefined) {
+//         headerString = default_settings.Page_Header.replace("{%olderPostId%}", oldestComment)
+//             .replace("{%newestPostId%}", mostRecentComment)
+//             .replace("{%totalPosts%}", numberOfComments);
+//     } else {
+//         headerString = user_settings.Page_Header.replace("{%olderPostId%}", oldestComment)
+//             .replace("{%newestPostId%}", mostRecentComment)
+//             .replace("{%totalPosts%}", numberOfComments);
+//     }
+
+    let headerString = default_settings.Page_Header.replace("{%olderPostId%}", oldestComment)
+        .replace("{%newestPostId%}", mostRecentComment)
+        .replace("{%totalPosts%}", numberOfComments);
 
     return headerString;
 }
+
+
 
 function generateReportHeader(mostRecentComment, oldestComment) {
     let numberOfComments = -1;
@@ -135,16 +141,20 @@ function generateReportHeader(mostRecentComment, oldestComment) {
     } else {
         numberOfComments = jQuery("div[id^=post]").length;
     }
-    let headerString;
-    if (user_settings === undefined) {
-        headerString = default_settings.Report_Header.replace("{%olderPostId%}", oldestComment)
-            .replace("{%newestPostId%}", mostRecentComment)
-            .replace("{%totalPosts%}", numberOfComments);
-    } else {
-        headerString = user_settings.Report_Header.replace("{%olderPostId%}", oldestComment)
-            .replace("{%newestPostId%}", mostRecentComment)
-            .replace("{%totalPosts%}", numberOfComments);
-    }
+    // let headerString;
+    // if (user_settings === undefined) {
+    //     headerString = default_settings.Report_Header.replace("{%olderPostId%}", oldestComment)
+    //         .replace("{%newestPostId%}", mostRecentComment)
+    //         .replace("{%totalPosts%}", numberOfComments);
+    // } else {
+    //     headerString = user_settings.Report_Header.replace("{%olderPostId%}", oldestComment)
+    //         .replace("{%newestPostId%}", mostRecentComment)
+    //         .replace("{%totalPosts%}", numberOfComments);
+    // }
+
+    let headerString = default_settings.Report_Header.replace("{%olderPostId%}", oldestComment)
+        .replace("{%newestPostId%}", mostRecentComment)
+        .replace("{%totalPosts%}", numberOfComments);
 
     return headerString;
 }

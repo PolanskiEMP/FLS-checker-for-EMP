@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         FLS Comment Checker
+// @name         FLS Comment Checker (dev)
 // @namespace    http://tampermonkey.net/
 // @version      1.94
 // @description  Credits to curtwagner who wrote and maintained the original script, and to Goodguygregg for bringing it back to life.
