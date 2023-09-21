@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name         FLS Comment Checker
 // @namespace    http://tampermonkey.net/
-// @version      3.1
+// @version      3.2
 // @description  Credits to curtwagner who wrote and maintained the original script, and to Goodguygregg for bringing it back to life.
 // @author       Polanski
 // @include      https://www.empornium.*/torrents.php*allcomments
 // @include      https://www.empornium.*/requests.php*allcomments
 // @include      https://www.empornium.*/forum/recent*
+// @include      https://www.empornium.*/collage/recent*
 // @downloadURL  https://github.com/PolanskiEMP/FLS-checker-for-EMP/raw/main/Main_UserScript.user.js
 // @updateURL    https://github.com/PolanskiEMP/FLS-checker-for-EMP/raw/main/Main_UserScript.user.js
 // @grant        GM_setValue
