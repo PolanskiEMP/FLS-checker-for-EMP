@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         FLS Comment Checker (dev)
+// @name         FLS Comment Checker
 // @namespace    http://tampermonkey.net/
 // @version      3.2.1
 // @description  Credits to curtwagner who wrote and maintained the original script, and to Goodguygregg for bringing it back to life.
@@ -24,7 +24,7 @@
 // @resource     progressBarStyle https://raw.githubusercontent.com/PolanskiEMP/FLS-checker-for-EMP/dev/progress-bar/progress-bar-style.css
 // @resource     modalHtml https://raw.githubusercontent.com/PolanskiEMP/FLS-checker-for-EMP/dev/modal/modal-html.html
 // @resource     modalSettingsHtml https://raw.githubusercontent.com/PolanskiEMP/FLS-checker-for-EMP/dev/modal/modal-settings-html.html
-// @resource     modalStyle https://raw.githubusercontent.com/PolanskiEMP/FLS-checker-for-EMP/dev/modal/modal-style.css
+// @resource     modalStyle https://raw.githubusercontent.com/PolanskiEMP/FLS-checker-for-EMP/madevin/modal/modal-style.css
 // @resource     sandboxHtml https://raw.githubusercontent.com/PolanskiEMP/FLS-checker-for-EMP/dev/sandbox/sandbox-html.html
 // @require      https://raw.githubusercontent.com/PolanskiEMP/FLS-checker-for-EMP/dev/gm-lib.js
 // @require      https://raw.githubusercontent.com/PolanskiEMP/FLS-checker-for-EMP/dev/sandbox/sandbox.js
