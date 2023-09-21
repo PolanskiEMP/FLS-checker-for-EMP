@@ -1,5 +1,7 @@
 console.log("main.js loaded...");
 
+const section = GetSection();
+
 let default_settings = {
     Page_Header: "Checking posts #{%olderPostId%} - #{%newestPostId%} ({%totalPosts%} posts)",
     Report_Header: "Checked posts {%olderPostId%} - {%newestPostId%} ({%totalPosts%} posts) :tick: \n \n[hr]",
@@ -13,6 +15,7 @@ let request_checker_string = "requests.php";
 let torrent_checker_string = "torrents.php";
 let forum_checker_string = "forum/recent";
 //document.URL.indexOf("https://www.empornium.me/collages.php")
+
 
 var undoArray = [];
 

@@ -47,7 +47,6 @@ function registerQuoteModalButtonsCallbacks() {
         let postId;
         let threadId;
         let postLink;
-        let section = GetSection();
         let username = jQuery(".modal-content").find(".user_name a").html().trim(/ +$/, "");
         let checkerComment = jQuery(".modal-content #comment-text-area").val();
         let sectionChar = section.name.charAt(0);
@@ -94,7 +93,6 @@ function Quote(post, sectionArea, user, postLink, checkerComment) {
     let username = user;
     let postid = post;
     let place = sectionArea;
-    let section = GetSection();
     var ajaxurl = section.link + "?action=get_post&section=" + section.name + "&body=1&post=" + postid;
     if (luminance.includes(section.name)) {
         ajaxurl = section.endpoint + '/' + postid + '/get?&body=1';
