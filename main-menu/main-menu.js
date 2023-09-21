@@ -17,7 +17,7 @@ function addMainMenuToDom() {
     setHideSignatureLabels();
 
     registerButtonsCallbacks();
-}
+};
 
 // shows/hides the main menu and changes button label on click
 function setMainMenuOpen() {
@@ -39,8 +39,8 @@ function setHideAvatarLabels() {
     } else {
         jQuery(".main-menu-form-popup #hide-avatar-button").html("Hide Avatars");
         jQuery(".avatar").slideDown(400);
-    }
-}
+    };
+};
 
 function setHideBadgesLabels() {
     let isHidingBadges = GM_getValue("isHidingBadges");
@@ -50,8 +50,8 @@ function setHideBadgesLabels() {
     } else {
         jQuery(".main-menu-form-popup #hide-badges-button").html("Hide Badges");
         jQuery(".badges").slideDown(400);
-    }
-}
+    };
+};
 
 function setHideSignatureLabels() {
     let isHidingSignature = GM_getValue("isHidingSignature");
@@ -61,13 +61,28 @@ function setHideSignatureLabels() {
     } else {
         jQuery(".main-menu-form-popup #hide-signatures-button").html("Hide Signatures");
         jQuery(".sig").show();
-    }
-}
+    };
+};
 
 function registerButtonsCallbacks() {
     console.log("Registering main menu buttons callbacks...");
     // shows the main menu
-    if((document.URL.indexOf(collage_checker_string) >= 0) || (document.URL.indexOf(forum_checker_string) >= 0) || (document.URL.indexOf(torrent_checker_string) >= 0)){
+    if (section.name === "requests") {
+        jQuery("body").on("click", "#main-menu-button", function () {
+            try {
+                newestCommentId = parseInt(
+                    jQuery("div[id^=post]").attr("id").replace("post", "")
+                );
+            } catch (error) {
+                console.error(
+                    `Couldn't find posts on this page... Something is very wrong... Resetting. Btw, caught this error ${error}`
+                );
+                clearSavedValues();
+            };
+            jQuery("#most-recent-comment-input").val(newestCommentId);
+            jQuery(".main-menu-form-popup").slideDown(450);
+        });
+    } else {
         jQuery("body").on("click", "#main-menu-button", function () {
             let newestCommentId = -1;
             try {
@@ -79,26 +94,11 @@ function registerButtonsCallbacks() {
                     `Couldn't find posts on this page... Something is very wrong... Resetting. Btw, caught this error ${error}`
                 );
                 clearSavedValues();
-            }
+            };
             jQuery("#most-recent-comment-input").val(newestCommentId);
             jQuery(".main-menu-form-popup").slideDown(450);
         });
-    } else {
-        jQuery("body").on("click", "#main-menu-button", function () {
-            try {
-                newestCommentId = parseInt(
-                    jQuery("div[id^=post]").attr("id").replace("post", "")
-                );
-            } catch (error) {
-                console.error(
-                    `Couldn't find posts on this page... Something is very wrong... Resetting. Btw, caught this error ${error}`
-                );
-                clearSavedValues();
-            }
-            jQuery("#most-recent-comment-input").val(newestCommentId);
-            jQuery(".main-menu-form-popup").slideDown(450);
-        });
-    }
+    };
 
     // hides the main menu and clears saved data...
     jQuery("body").on("click", ".main-menu-form-popup #clear-data-button", function () {
@@ -107,7 +107,7 @@ function registerButtonsCallbacks() {
         jQuery("#main-menu-button").html("Open Menu");
         GM_setValue("isMainMenuOpen", true);
     });
-
+    
     // hide/show menu 
     jQuery("body").on("click", "#main-menu-button", function () {
         let isMainMenuOpen = GM_getValue("isMainMenuOpen");
@@ -115,10 +115,12 @@ function registerButtonsCallbacks() {
             isMainMenuOpen = !isMainMenuOpen;
         } else {
             isMainMenuOpen = !isMainMenuOpen;
-        }
+        };
         GM_setValue("isMainMenuOpen", isMainMenuOpen);
         setMainMenuOpen(isMainMenuOpen);
     });
+
+    // all these hide/show could use a single function
 
     // hide/show avatars
     jQuery("body").on("click", ".main-menu-form-popup #hide-avatar-button", function () {
@@ -127,7 +129,7 @@ function registerButtonsCallbacks() {
             isHidingAvatars = !isHidingAvatars;
         } else {
             isHidingAvatars = !isHidingAvatars;
-        }
+        };
         GM_setValue("isHidingAvatars", isHidingAvatars);
         setHideAvatarLabels(isHidingAvatars);
     });
@@ -139,7 +141,7 @@ function registerButtonsCallbacks() {
             isHidingBadges = !isHidingBadges;
         } else {
             isHidingBadges = !isHidingBadges;
-        }
+        };
         GM_setValue("isHidingBadges", isHidingBadges);
         setHideBadgesLabels(isHidingBadges);
     });
@@ -151,7 +153,7 @@ function registerButtonsCallbacks() {
             isHidingSignature = !isHidingSignature;
         } else {
             isHidingSignature = !isHidingSignature;
-        }
+        };
         GM_setValue("isHidingSignature", isHidingSignature);
         setHideSignatureLabels(isHidingSignature);
     });
@@ -173,8 +175,8 @@ function registerButtonsCallbacks() {
             GM_setValue("previousPostId", mostRecentComment);
             GM_setValue("isScaning", true);
             scanPosts();
-        }
+        };
     });
-}
+};
 
 console.log("main-menu.js loaded...");
