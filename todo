@@ -1,6 +1,7 @@
 
 Bugs
 
+* When the OK button in the Quote modal is clicked for the first time the progress bar total count increases by one
 * Trailing and leading spaces and characters that are not numerals in post number fields will break scanning
 * Don't upscale external images if they are under 500px wide
 
@@ -8,7 +9,6 @@ Bugs
 Functionality
 
 * Add support for finishing a report prematurely (WIP)
-* Add support for collage comments (site dependent, no jQuery library)
 * Make "report post" in requests consistent with other sections (changing link to button, site dependent)
 * Add support for submitting reports directly to the appropriate checking thread
 * Add page load check on post scanning  (can't remember what this was about anymore)

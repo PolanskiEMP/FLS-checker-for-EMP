@@ -51,7 +51,6 @@ function registerQuoteModalButtonsCallbacks() {
         let username = jQuery(".modal-content").find(".user_name a").html().trim(/ +$/, "");
         let checkerComment = jQuery(".modal-content #comment-text-area").val();
         let sectionChar = section.name.charAt(0);
-        // console.log("I see you are checking " + section.name +"!")
 
         if (section.name == "requests") {
             postIdJquery = jQuery(".modal-content").find("div[id^=post]");
