@@ -5,6 +5,8 @@ function removePostsOnPage() {
     } else {          
         jQuery("table[id^=post]").prev().remove();
         jQuery("table[id^=post]").remove();
+        jQuery("div.trashed").prev().remove();
+        jQuery("div.trashed").remove();
     };
 };
 
