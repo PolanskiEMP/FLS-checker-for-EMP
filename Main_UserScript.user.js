@@ -23,7 +23,6 @@
 // @resource     progressBarHtml https://raw.githubusercontent.com/PolanskiEMP/FLS-checker-for-EMP/main/progress-bar/progress-bar-html.html
 // @resource     progressBarStyle https://raw.githubusercontent.com/PolanskiEMP/FLS-checker-for-EMP/main/progress-bar/progress-bar-style.css
 // @resource     modalHtml https://raw.githubusercontent.com/PolanskiEMP/FLS-checker-for-EMP/main/modal/modal-html.html
-// @resource     modalSettingsHtml https://raw.githubusercontent.com/PolanskiEMP/FLS-checker-for-EMP/main/modal/modal-settings-html.html
 // @resource     modalStyle https://raw.githubusercontent.com/PolanskiEMP/FLS-checker-for-EMP/main/modal/modal-style.css
 // @resource     sandboxHtml https://raw.githubusercontent.com/PolanskiEMP/FLS-checker-for-EMP/main/sandbox/sandbox-html.html
 // @require      https://raw.githubusercontent.com/PolanskiEMP/FLS-checker-for-EMP/main/gm-lib.js
